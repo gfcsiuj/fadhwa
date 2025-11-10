@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Language, Page } from '../types';
 import { Theme } from '../App';
@@ -79,14 +80,14 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
             </div>
 
             {/* Icons & Actions */}
-            <div className="flex items-center space-x-1 sm:space-x-2 rtl:space-x-reverse">
+            <div className="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse">
               <div className="hidden md:block">
                 <ThemeSwitcher theme={theme} onThemeChange={onThemeChange} />
               </div>
-              <button className="hidden md:block p-2 text-[var(--c-content)] hover:text-opacity-75 rounded-full">
+              <button className="hidden md:flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
                 <SearchIcon />
               </button>
-              <button onClick={() => setActivePage('account')} className="hidden md:block p-2 text-[var(--c-content)] hover:text-opacity-75 rounded-full">
+              <button onClick={() => setActivePage('account')} className="hidden md:flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
                 <UserIcon />
               </button>
 
@@ -94,10 +95,10 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
                 <ThemeSwitcher theme={theme} onThemeChange={onThemeChange} />
               </div>
 
-              <button onClick={onCartClick} className="relative p-2 text-[var(--c-content)] hover:text-opacity-75 rounded-full">
+              <button onClick={onCartClick} className="relative flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
                 <CartIcon />
                 {cartItemCount > 0 && (
-                  <span className="absolute top-0 right-0 h-4 w-4 bg-[var(--c-action)] text-white text-xs rounded-full flex items-center justify-center animate-pulse-badge">
+                  <span className="absolute top-1 right-1 h-4 w-4 bg-[var(--c-action)] text-white text-xs rounded-full flex items-center justify-center animate-pulse-badge">
                     {cartItemCount}
                   </span>
                 )}
@@ -106,7 +107,7 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
                 <GlobeIcon />
                 <span>{text.language}</span>
               </button>
-              <button className="md:hidden p-2 text-[var(--c-content)]" onClick={() => setIsMenuOpen(true)}>
+              <button className="md:hidden flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full" onClick={() => setIsMenuOpen(true)}>
                 <MenuIcon />
               </button>
             </div>

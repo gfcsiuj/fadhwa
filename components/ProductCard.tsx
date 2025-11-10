@@ -69,7 +69,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, language, onProductC
         </p>
         <button 
           onClick={handleAddToCartClick}
-          className="w-full mt-auto bg-[var(--c-content)] text-[var(--c-bg)] py-2 px-4 rounded-md font-semibold hover:bg-[var(--c-accent)] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--c-content)] focus:ring-opacity-50"
+          className="w-full mt-auto glass-btn justify-center text-[var(--c-content)] py-2 px-4 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-[var(--c-content)] focus:ring-opacity-50"
         >
           {text.addToCart}
         </button>

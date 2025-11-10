@@ -38,7 +38,7 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({ language, onProductClick,
               <p className="text-[var(--c-content)]/70 max-w-sm mx-auto mb-6">{text.favoritesEmptySubtitle}</p>
               <button 
                 onClick={() => setActivePage('categories')}
-                className="bg-[var(--c-content)] text-[var(--c-bg)] py-2 px-6 rounded-md font-semibold hover:bg-[var(--c-accent)] transition-colors duration-300">
+                className="glass-btn text-[var(--c-content)] py-2 px-6 rounded-md font-semibold">
                 {text.favoritesEmptyAction}
               </button>
             </div>

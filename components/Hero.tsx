@@ -29,7 +29,7 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
         </p>
         <a 
           href="#" 
-          className="bg-[var(--c-content)] text-[var(--c-bg)] py-3 px-8 rounded-full text-lg font-semibold hover:bg-[var(--c-accent)] transition-transform transform hover:scale-105 duration-300 shadow-lg"
+          className="glass-btn py-3 px-8 rounded-full text-lg font-semibold text-white shadow-lg"
         >
           {text.heroButton}
         </a>

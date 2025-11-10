@@ -114,7 +114,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, onClos
           <div className="mt-6 pt-6 border-t border-[var(--c-content)]/10">
             <button
               onClick={handleAddToCart}
-              className="w-full bg-[var(--c-content)] text-[var(--c-bg)] py-3 px-4 rounded-md font-semibold hover:bg-[var(--c-accent)] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--c-content)] focus:ring-opacity-50"
+              className="w-full glass-btn justify-center text-[var(--c-content)] py-3 px-4 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-[var(--c-content)] focus:ring-opacity-50"
             >
               {text.addToCart}
             </button>

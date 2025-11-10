@@ -141,8 +141,8 @@ html[data-theme="dark"] body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     border-radius: 99em;
     border: none;
     cursor: pointer;
@@ -172,8 +172,8 @@ html[data-theme="dark"] body {
 
 .theme-switcher-icon-wrapper {
     position: relative;
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,8 +183,8 @@ html[data-theme="dark"] body {
 .sun-icon, .moon-icon {
     position: absolute;
     --c: var(--c-content);
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
@@ -210,6 +210,36 @@ html[data-theme="dark"] body {
     opacity: 1;
     transform: scale(1) rotate(0deg);
 }
+
+/* Reusable Glass Button */
+.glass-btn {
+  background-color: color-mix(in srgb, var(--c-glass) 12%, transparent);
+  backdrop-filter: blur(8px) saturate(var(--saturation));
+  -webkit-backdrop-filter: blur(8px) saturate(var(--saturation));
+  box-shadow: 
+      inset 0 0 0 1px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 10%), transparent),
+      inset 1.8px 3px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 90%), transparent), 
+      inset -2px -2px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 80%), transparent), 
+      inset -3px -8px 1px -6px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 60%), transparent), 
+      inset -0.3px -1px 4px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), 
+      inset -1.5px 2.5px 0px -2px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), 
+      inset 0px 3px 4px -2px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), 
+      inset 2px -6.5px 1px -4px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 
+      0px 1px 5px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 
+      0px 6px 16px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+  
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-btn:hover {
+  background-color: color-mix(in srgb, var(--c-glass) 20%, transparent);
+  transform: translateY(-1px);
+}
+.glass-btn:active {
+  transform: translateY(0px);
+  background-color: color-mix(in srgb, var(--c-glass) 25%, transparent);
+}
+
 
 /* Glass Bar Styles for BottomNav */
 .glass-bar {

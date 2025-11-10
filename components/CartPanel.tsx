@@ -114,7 +114,7 @@ const CartPanel: React.FC<CartPanelProps> = ({ isOpen, onClose, language }) => {
             </div>
             <button 
               disabled={cart.length === 0}
-              className="w-full bg-[var(--c-content)] text-[var(--c-bg)] py-3 px-4 rounded-md font-semibold hover:bg-[var(--c-accent)] transition-colors duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed">
+              className="w-full glass-btn justify-center text-[var(--c-content)] py-3 px-4 rounded-md font-semibold disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
               {text.checkout}
             </button>
         </footer>
