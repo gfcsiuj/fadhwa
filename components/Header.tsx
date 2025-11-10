@@ -116,21 +116,11 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
 
             {/* Icons & Actions */}
             <div className="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse">
-              {/* Desktop Actions */}
-              <div className="hidden md:flex items-center space-x-2 rtl:space-x-reverse">
-                <ThemeSwitcher theme={theme} onThemeChange={onThemeChange} />
-                <button onClick={onSearchClick} className="flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
-                  <SearchIcon />
-                </button>
-              </div>
+              <ThemeSwitcher theme={theme} onThemeChange={onThemeChange} />
+              <button onClick={onSearchClick} className="flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
+                <SearchIcon />
+              </button>
               
-              {/* Mobile Search */}
-              <div className="md:hidden">
-                 <button onClick={onSearchClick} className="flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
-                    <SearchIcon />
-                </button>
-              </div>
-
               <button onClick={onCartClick} className="relative flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
                 <CartIcon />
                 {cartItemCount > 0 && (
@@ -139,10 +129,12 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
                   </span>
                 )}
               </button>
+
               <button onClick={toggleLanguage} className="hidden md:flex items-center space-x-1 rtl:space-x-reverse p-2 text-[var(--c-content)] hover:text-opacity-75 rounded-full text-sm font-medium">
                 <GlobeIcon />
                 <span>{text.language}</span>
               </button>
+
               <button className="md:hidden flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full" onClick={() => setIsMenuOpen(true)}>
                 <MenuIcon />
               </button>
