@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import BottomNav from './components/BottomNav';
 import HomePage from './components/HomePage';
 import CategoriesPage from './components/CategoriesPage';
 import FavoritesPage from './components/FavoritesPage';
 import AccountPage from './components/AccountPage';
+import InfoPage from './components/InfoPage';
 import { AppProvider } from './context/AppContext';
 import { Language, Page, Product } from './types';
 import ProductDetailModal from './components/ProductDetailModal';
@@ -67,7 +67,9 @@ const App: React.FC = () => {
       case 'favorites':
         return <FavoritesPage language={language} onProductClick={setSelectedProduct} setActivePage={handlePageChange} addToast={addToast} />;
       case 'account':
-        return <AccountPage language={language} />;
+        return <AccountPage language={language} setActivePage={handlePageChange} />;
+      case 'info':
+        return <InfoPage language={language} setActivePage={handlePageChange} />;
       default:
         return <HomePage language={language} onProductClick={setSelectedProduct} addToast={addToast} />;
     }
@@ -94,7 +96,6 @@ const App: React.FC = () => {
         <main className="pb-28 md:pb-0 overflow-x-hidden" key={activePage}>
           {renderPage()}
         </main>
-        <Footer language={language} setActivePage={handlePageChange} />
         <BottomNav language={language} activePage={activePage} setActivePage={handlePageChange} />
 
         {selectedProduct && (

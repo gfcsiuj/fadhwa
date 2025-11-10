@@ -1,22 +1,24 @@
 
 import React from 'react';
-import { Language } from '../types';
+import { Language, Page } from '../types';
 import { UI_TEXT } from '../constants';
-import { UserIcon, ReceiptIcon, MapPinIcon, CogIcon, ChevronRightIcon, LogoutIcon } from './icons/Icons';
+import { UserIcon, ReceiptIcon, MapPinIcon, CogIcon, ChevronRightIcon, LogoutIcon, InfoIcon } from './icons/Icons';
 
 interface AccountPageProps {
   language: Language;
+  setActivePage: (page: Page) => void;
 }
 
-const AccountPage: React.FC<AccountPageProps> = ({ language }) => {
+const AccountPage: React.FC<AccountPageProps> = ({ language, setActivePage }) => {
   const text = UI_TEXT[language];
   const isRtl = language === 'ar';
 
   const menuItems = [
-    { label: text.accountEditProfile, icon: <UserIcon className="w-6 h-6 text-[var(--c-accent)]" /> },
-    { label: text.accountOrderHistory, icon: <ReceiptIcon className="w-6 h-6 text-[var(--c-accent)]" /> },
-    { label: text.accountAddresses, icon: <MapPinIcon className="w-6 h-6 text-[var(--c-accent)]" /> },
-    { label: text.accountSettings, icon: <CogIcon className="w-6 h-6 text-[var(--c-accent)]" /> },
+    { label: text.accountEditProfile, icon: <UserIcon className="w-6 h-6 text-[var(--c-accent)]" />, page: null },
+    { label: text.accountOrderHistory, icon: <ReceiptIcon className="w-6 h-6 text-[var(--c-accent)]" />, page: null },
+    { label: text.accountAddresses, icon: <MapPinIcon className="w-6 h-6 text-[var(--c-accent)]" />, page: null },
+    { label: text.accountSettings, icon: <CogIcon className="w-6 h-6 text-[var(--c-accent)]" />, page: null },
+    { label: text.navInfo, icon: <InfoIcon className="w-6 h-6 text-[var(--c-accent)]" />, page: 'info' as Page },
   ];
 
   const userName = language === 'ar' ? 'زائر فضوة' : 'Fadhwa Guest';
@@ -50,8 +52,13 @@ const AccountPage: React.FC<AccountPageProps> = ({ language }) => {
                 <React.Fragment key={item.label}>
                     <a
                         href="#"
-                        onClick={e => e.preventDefault()}
-                        className="flex items-center justify-between p-4 hover:bg-[var(--c-content)]/5 transition-colors duration-200 rounded-lg"
+                        onClick={e => {
+                            e.preventDefault();
+                            if (item.page) {
+                                setActivePage(item.page);
+                            }
+                        }}
+                        className={`flex items-center justify-between p-4 transition-colors duration-200 rounded-lg ${item.page ? 'hover:bg-[var(--c-content)]/5 cursor-pointer' : 'opacity-60 cursor-not-allowed'}`}
                     >
                         <div className="flex items-center space-x-4 rtl:space-x-reverse">
                         {item.icon}

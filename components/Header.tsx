@@ -29,8 +29,7 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
   const mobileNavLinks = [
     { page: 'home' as Page, label: text.navHome },
     { page: 'categories' as Page, label: text.navShop },
-    { page: null, label: text.navAbout },
-    { page: null, label: text.navContact },
+    { page: 'info' as Page, label: text.navInfo },
   ];
   
   const navItems = useMemo(() => [

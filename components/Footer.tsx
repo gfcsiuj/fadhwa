@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Language, Page } from '../types';
 import { UI_TEXT } from '../constants';
@@ -12,11 +11,12 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ language, setActivePage }) => {
   const text = UI_TEXT[language];
   
+  // Fix: Use correct keys from UI_TEXT constant. 'navAbout' should be 'navInfo' and link to the 'info' page. 'navContact' should be 'footerContact'.
   const navLinks = [
     { page: 'home' as Page, label: text.navHome },
     { page: 'categories' as Page, label: text.navShop },
-    { page: null, label: text.navAbout },
-    { page: null, label: text.navContact },
+    { page: 'info' as Page, label: text.navInfo },
+    { page: null, label: text.footerContact },
   ];
 
   return (

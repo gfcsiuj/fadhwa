@@ -1,7 +1,7 @@
 
 export type Language = 'ar' | 'en';
 
-export type Page = 'home' | 'categories' | 'favorites' | 'account';
+export type Page = 'home' | 'categories' | 'favorites' | 'account' | 'info';
 
 export interface Product {
   id: number;

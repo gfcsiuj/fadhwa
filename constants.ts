@@ -5,8 +5,7 @@ export const UI_TEXT = {
   ar: {
     navHome: 'الرئيسية',
     navShop: 'المتجر',
-    navAbout: 'من نحن',
-    navContact: 'تواصل معنا',
+    navInfo: 'عن المتجر',
     heroTitle: 'اكتشف الأناقة في كل زاوية',
     heroSubtitle: 'مجموعة مختارة من أفضل المنتجات المنزلية والإلكترونية لترقية مساحتك.',
     heroButton: 'تسوق الآن',
@@ -55,8 +54,7 @@ export const UI_TEXT = {
   en: {
     navHome: 'Home',
     navShop: 'Shop',
-    navAbout: 'About Us',
-    navContact: 'Contact',
+    navInfo: 'About Store',
     heroTitle: 'Discover Elegance in Every Corner',
     heroSubtitle: 'A curated collection of the finest home and electronic goods to elevate your space.',
     heroButton: 'Shop Now',
