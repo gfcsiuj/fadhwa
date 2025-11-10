@@ -38,7 +38,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ language, activePage, setActivePa
           transform: `translateX(${sliderPosition}%)`,
         }}
       />
-      <div className="flex justify-around items-center h-full w-full">
+      <div className="grid grid-cols-4 items-center h-full w-full">
         {navItems.map((item) => (
           <a
             key={item.id}
