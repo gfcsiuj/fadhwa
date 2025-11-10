@@ -43,6 +43,7 @@ export const UI_TEXT = {
     checkout: 'إتمام الشراء',
     productDetails: 'تفاصيل المنتج',
     close: 'إغلاق',
+    menu: 'القائمة',
   },
   en: {
     navHome: 'Home',
@@ -85,6 +86,7 @@ export const UI_TEXT = {
     checkout: 'Checkout',
     productDetails: 'Product Details',
     close: 'Close',
+    menu: 'Menu',
   },
 };
 
