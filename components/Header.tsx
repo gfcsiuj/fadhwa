@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Language, Page } from '../types';
 import { Theme } from '../App';
@@ -91,10 +90,8 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
                 <UserIcon />
               </button>
 
-              <div className="md:hidden flex items-center justify-center h-full">
-                <div className="scale-[0.6] -mx-3 sm:-mx-2">
-                    <ThemeSwitcher theme={theme} onThemeChange={onThemeChange} />
-                </div>
+              <div className="md:hidden">
+                <ThemeSwitcher theme={theme} onThemeChange={onThemeChange} />
               </div>
 
               <button onClick={onCartClick} className="relative p-2 text-[var(--c-content)] hover:text-opacity-75 rounded-full">
@@ -130,7 +127,7 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
             onClick={handleMenuClose}
           ></div>
 
-          <div className={`relative z-10 w-4/5 max-w-sm h-full bg-[var(--c-bg)] shadow-2xl flex flex-col ${menuAnimationClass} ${isRtl ? 'mr-0 ml-auto' : 'ml-0 mr-auto'}`}>
+          <div className={`relative z-10 w-4/5 max-w-sm h-full bg-[var(--c-bg)] shadow-2xl flex flex-col ${menuAnimationClass} ${isRtl ? 'ml-0 mr-auto' : 'mr-0 ml-auto'}`}>
             <div className="flex items-center justify-between p-4 border-b border-[var(--c-content)]/10">
               <h2 className="font-bold text-lg">{text.menu}</h2>
               <button onClick={handleMenuClose} className="p-2 -m-2">
