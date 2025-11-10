@@ -116,13 +116,15 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
 
             {/* Icons & Actions */}
             <div className="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse">
-              <div className="hidden md:block">
+              {/* Desktop Actions */}
+              <div className="hidden md:flex items-center space-x-2 rtl:space-x-reverse">
                 <ThemeSwitcher theme={theme} onThemeChange={onThemeChange} />
+                <button onClick={onSearchClick} className="flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
+                  <SearchIcon />
+                </button>
               </div>
-              <button onClick={onSearchClick} className="hidden md:flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
-                <SearchIcon />
-              </button>
               
+              {/* Mobile Search */}
               <div className="md:hidden">
                  <button onClick={onSearchClick} className="flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
                     <SearchIcon />
