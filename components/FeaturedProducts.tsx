@@ -1,14 +1,16 @@
 
 import React from 'react';
-import { Language } from '../types';
+import { Language, Product } from '../types';
 import { UI_TEXT, PRODUCTS } from '../constants';
 import ProductCard from './ProductCard';
 
 interface FeaturedProductsProps {
   language: Language;
+  onProductClick: (product: Product) => void;
+  addToast: (message: string) => void;
 }
 
-const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ language }) => {
+const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ language, onProductClick, addToast }) => {
   const text = UI_TEXT[language];
 
   return (
@@ -18,12 +20,13 @@ const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ language }) => {
           {text.featuredTitle}
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-          {PRODUCTS.slice(0, 8).map((product, index) => (
+          {PRODUCTS.slice(0, 8).map((product) => (
             <ProductCard 
               key={product.id} 
               product={product} 
               language={language}
-              isFavorited={index < 2} 
+              onProductClick={onProductClick}
+              addToast={addToast}
             />
           ))}
         </div>

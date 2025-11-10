@@ -1,3 +1,4 @@
+
 import { Product, Category } from './types';
 
 export const UI_TEXT = {
@@ -33,6 +34,15 @@ export const UI_TEXT = {
     accountLogout: 'تسجيل الخروج',
     favoritesEmptySubtitle: 'يبدو أنك لم تقم بإضافة أي منتجات إلى قائمة المفضلات بعد. ابدأ التصفح واحفظ منتجاتك المفضلة!',
     accountPageSubtitle: 'إدارة ملفك الشخصي، طلباتك، وإعداداتك.',
+    addedToCart: 'تمت إضافة المنتج إلى السلة!',
+    addedToFavorites: 'تمت الإضافة إلى المفضلة!',
+    removedFromFavorites: 'تمت الإزالة من المفضلة!',
+    cartTitle: 'سلة التسوق',
+    cartEmpty: 'سلتك فارغة.',
+    subtotal: 'المجموع الفرعي',
+    checkout: 'إتمام الشراء',
+    productDetails: 'تفاصيل المنتج',
+    close: 'إغلاق',
   },
   en: {
     navHome: 'Home',
@@ -66,6 +76,15 @@ export const UI_TEXT = {
     accountLogout: 'Logout',
     favoritesEmptySubtitle: "Looks like you haven't added any items to your wishlist yet. Start exploring and save your favorite products!",
     accountPageSubtitle: 'Manage your profile, orders, and settings.',
+    addedToCart: 'Product added to cart!',
+    addedToFavorites: 'Added to favorites!',
+    removedFromFavorites: 'Removed from favorites!',
+    cartTitle: 'Shopping Cart',
+    cartEmpty: 'Your cart is empty.',
+    subtotal: 'Subtotal',
+    checkout: 'Checkout',
+    productDetails: 'Product Details',
+    close: 'Close',
   },
 };
 
@@ -76,6 +95,10 @@ export const PRODUCTS: Product[] = [
     category: { ar: 'ديكور منزلي', en: 'Home Decor' },
     price: 250,
     imageUrl: 'https://picsum.photos/seed/lamp/400/400',
+    description: {
+      ar: 'مصباح طاولة أنيق مصنوع من السيراميك عالي الجودة، يضيف لمسة من الدفء والإضاءة الهادئة إلى أي غرفة. مثالي لغرف النوم والمعيشة.',
+      en: 'An elegant table lamp made of high-quality ceramic, adding a touch of warmth and soft lighting to any room. Perfect for bedrooms and living rooms.'
+    }
   },
   {
     id: 2,
@@ -83,6 +106,10 @@ export const PRODUCTS: Product[] = [
     category: { ar: 'إلكترونيات', en: 'Electronics' },
     price: 499,
     imageUrl: 'https://picsum.photos/seed/headphones/400/400',
+    description: {
+      ar: 'استمتع بصوت نقي وغامر مع سماعات البلوتوث اللاسلكية. تصميم مريح، عمر بطارية طويل، ومثالية للموسيقى والمكالمات.',
+      en: 'Enjoy pure and immersive sound with these wireless Bluetooth headphones. Ergonomic design, long battery life, and perfect for music and calls.'
+    }
   },
   {
     id: 3,
@@ -90,6 +117,10 @@ export const PRODUCTS: Product[] = [
     category: { ar: 'مطبخ', en: 'Kitchen' },
     price: 750,
     imageUrl: 'https://picsum.photos/seed/cookware/400/400',
+    description: {
+      ar: 'طقم أواني طهي متكامل غير لاصق، مصنوع من مواد متينة لتوزيع حرارة متساوٍ ونتائج طهي مثالية في كل مرة.',
+      en: 'A complete non-stick cookware set, made from durable materials for even heat distribution and perfect cooking results every time.'
+    }
   },
   {
     id: 4,
@@ -97,6 +128,10 @@ export const PRODUCTS: Product[] = [
     category: { ar: 'أثاث', en: 'Furniture' },
     price: 1200,
     imageUrl: 'https://picsum.photos/seed/chair/400/400',
+    description: {
+      ar: 'أضف قطعة مميزة إلى ديكورك مع هذا الكرسي المخملي الفاخر. يوفر راحة فائقة وتصميمًا عصريًا يلفت الأنظار.',
+      en: 'Add a statement piece to your decor with this luxurious velvet accent chair. It offers superior comfort and a modern design that catches the eye.'
+    }
   },
    {
     id: 5,
@@ -104,6 +139,10 @@ export const PRODUCTS: Product[] = [
     category: { ar: 'إلكترونيات', en: 'Electronics' },
     price: 350,
     imageUrl: 'https://picsum.photos/seed/clock/400/400',
+    description: {
+        ar: 'أكثر من مجرد ساعة، تعرض درجة الحرارة والتاريخ. تصميم بسيط وأنيق يناسب أي جدار في منزلك أو مكتبك.',
+        en: 'More than just a clock, it displays temperature and date. A simple and elegant design that fits any wall in your home or office.'
+    }
   },
   {
     id: 6,
@@ -111,6 +150,10 @@ export const PRODUCTS: Product[] = [
     category: { ar: 'حمام', en: 'Bathroom' },
     price: 180,
     imageUrl: 'https://picsum.photos/seed/towels/400/400',
+    description: {
+        ar: 'دلل نفسك مع مجموعة المناشف القطنية الفاخرة. فائقة النعومة والامتصاص لتجربة استحمام تشبه السبا.',
+        en: 'Pamper yourself with this luxury cotton towel set. Ultra-soft and absorbent for a spa-like bathing experience.'
+    }
   },
   {
     id: 7,
@@ -118,6 +161,10 @@ export const PRODUCTS: Product[] = [
     category: { ar: 'إلكترونيات', en: 'Electronics' },
     price: 1500,
     imageUrl: 'https://picsum.photos/seed/sound/400/400',
+    description: {
+        ar: 'ارتقِ بتجربة الترفيه المنزلي مع هذا النظام الصوتي القوي. مثالي للأفلام والموسيقى، يوفر صوتًا محيطيًا سينمائيًا.',
+        en: 'Elevate your home entertainment with this powerful sound system. Ideal for movies and music, providing cinematic surround sound.'
+    }
   },
   {
     id: 8,
@@ -125,6 +172,10 @@ export const PRODUCTS: Product[] = [
     category: { ar: 'ديكور منزلي', en: 'Home Decor' },
     price: 120,
     imageUrl: 'https://picsum.photos/seed/candles/400/400',
+    description: {
+        ar: 'خلق أجواء من الاسترخاء والهدوء مع مجموعة الشموع العطرية. روائح متنوعة تدوم طويلاً لتعطير منزلك.',
+        en: 'Create an atmosphere of relaxation and tranquility with this scented candle set. A variety of long-lasting scents to perfume your home.'
+    }
   },
 ];
 

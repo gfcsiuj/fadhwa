@@ -1,33 +1,39 @@
-import React, { useState } from 'react';
+
+import React from 'react';
 import { Product, Language } from '../types';
 import { UI_TEXT } from '../constants';
 import { HeartIcon } from './icons/Icons';
+import { useAppContext } from '../context/AppContext';
 
 interface ProductCardProps {
   product: Product;
   language: Language;
-  isFavorited?: boolean;
+  onProductClick: (product: Product) => void;
+  addToast: (message: string) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, language, isFavorited: initialIsFavorited = false }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, language, onProductClick, addToast }) => {
   const text = UI_TEXT[language];
-  const [isFavorited, setIsFavorited] = useState(initialIsFavorited);
+  const { favorites, toggleFavorite, addToCart } = useAppContext();
+  const isFavorited = favorites.includes(product.id);
 
-  const handleFavoriteClick = () => {
-    setIsFavorited(!isFavorited);
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    toggleFavorite(product.id);
+    addToast(isFavorited ? text.removedFromFavorites : text.addedToFavorites);
   };
 
-  const handleAddToCartClick = () => {
-    // For demonstration, we'll use an alert. In a real app, this would dispatch an action.
-    alert(`Added "${product.name[language]}" to cart.`);
+  const handleAddToCartClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    addToCart(product);
+    addToast(text.addedToCart);
   };
 
   const handleCardClick = (e: React.MouseEvent) => {
-    // This function can be used to handle navigation with a router
-    // or to open a modal instead of following the href.
-    // For now, we prevent default and show a placeholder alert.
     e.preventDefault();
-    alert(`Showing details for "${product.name[language]}"...`);
+    onProductClick(product);
   };
 
   return (

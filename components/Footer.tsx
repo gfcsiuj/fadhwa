@@ -1,20 +1,22 @@
 
 import React from 'react';
-import { Language } from '../types';
+import { Language, Page } from '../types';
 import { UI_TEXT } from '../constants';
 import { FacebookIcon, InstagramIcon, TelegramIcon } from './icons/Icons';
 
 interface FooterProps {
   language: Language;
+  setActivePage: (page: Page) => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ language }) => {
+const Footer: React.FC<FooterProps> = ({ language, setActivePage }) => {
   const text = UI_TEXT[language];
+  
   const navLinks = [
-    { href: '#', label: text.navHome },
-    { href: '#', label: text.navShop },
-    { href: '#', label: text.navAbout },
-    { href: '#', label: text.navContact },
+    { page: 'home' as Page, label: text.navHome },
+    { page: 'categories' as Page, label: text.navShop },
+    { page: null, label: text.navAbout },
+    { page: null, label: text.navContact },
   ];
 
   return (
@@ -35,7 +37,10 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
             <ul className="space-y-2">
               {navLinks.map(link => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-[var(--c-bg)]/80 hover:text-white transition-colors duration-200">{link.label}</a>
+                  <a href="#" onClick={(e) => {
+                    e.preventDefault();
+                    if(link.page) setActivePage(link.page);
+                  }} className="text-[var(--c-bg)]/80 hover:text-white transition-colors duration-200">{link.label}</a>
                 </li>
               ))}
             </ul>

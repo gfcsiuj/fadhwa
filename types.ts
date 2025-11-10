@@ -15,6 +15,10 @@ export interface Product {
   };
   price: number;
   imageUrl: string;
+  description: {
+    ar: string;
+    en: string;
+  };
 }
 
 export interface Category {
@@ -24,4 +28,17 @@ export interface Category {
         en: string;
     };
     imageUrl: string;
+}
+
+export interface CartItem extends Product {
+  quantity: number;
+}
+
+export interface AppContextType {
+  favorites: number[];
+  toggleFavorite: (id: number) => void;
+  cart: CartItem[];
+  addToCart: (product: Product) => void;
+  removeFromCart: (id: number) => void;
+  updateQuantity: (id: number, quantity: number) => void;
 }

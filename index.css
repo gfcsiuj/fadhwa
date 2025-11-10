@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -57,6 +58,61 @@ html[data-theme="dark"] body {
     transform: translateY(0);
   }
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
 
 @keyframes pulse-slow {
   50% {
@@ -336,4 +392,41 @@ html[data-theme="dark"] body {
     background-color 400ms cubic-bezier(1, 0.0, 0.4, 1),
     box-shadow 400ms cubic-bezier(1, 0.0, 0.4, 1),
     transform 400ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Modal, Cart, Toast Styles */
+.modal-enter {
+  animation: fadeIn 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-exit {
+  animation: fadeOut 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-content-enter {
+  animation: fadeInUp 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-content-exit {
+  animation: fadeOut 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-name: fadeOut, slideOutDown;
+}
+
+.cart-enter-ltr {
+  animation: slideInRight 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cart-exit-ltr {
+  animation: slideOutRight 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-enter-rtl {
+  animation: slideInLeft 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cart-exit-rtl {
+  animation: slideOutLeft 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toast-enter {
+    animation: fadeInUp 0.5s;
+}
+
+.toast-exit {
+    animation: fadeOut 0.5s;
 }

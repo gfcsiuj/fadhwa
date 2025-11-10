@@ -19,6 +19,8 @@ const AccountPage: React.FC<AccountPageProps> = ({ language }) => {
     { label: text.accountSettings, icon: <CogIcon className="w-6 h-6 text-[var(--c-accent)]" /> },
   ];
 
+  const userName = language === 'ar' ? 'زائر فضوة' : 'Fadhwa Guest';
+
   return (
     <div className="animate-fade animate-fade-in-up">
       <section className="py-12 sm:py-16">
@@ -37,7 +39,7 @@ const AccountPage: React.FC<AccountPageProps> = ({ language }) => {
               className="w-20 h-20 rounded-full object-cover border-4 border-[var(--c-bg)]"
             />
             <div>
-              <h2 className="text-2xl font-bold text-[var(--c-content)]">فضوة الدوسري</h2>
+              <h2 className="text-2xl font-bold text-[var(--c-content)]">{userName}</h2>
               <p className="text-[var(--c-content)]/80">fadhwa.store@example.com</p>
             </div>
           </div>
@@ -48,6 +50,7 @@ const AccountPage: React.FC<AccountPageProps> = ({ language }) => {
                 <React.Fragment key={item.label}>
                     <a
                         href="#"
+                        onClick={e => e.preventDefault()}
                         className="flex items-center justify-between p-4 hover:bg-[var(--c-content)]/5 transition-colors duration-200 rounded-lg"
                     >
                         <div className="flex items-center space-x-4 rtl:space-x-reverse">

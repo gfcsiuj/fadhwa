@@ -1,17 +1,23 @@
 
 import React from 'react';
-import { Language } from '../types';
+import { Language, Page, Product } from '../types';
 import { UI_TEXT, PRODUCTS } from '../constants';
 import ProductCard from './ProductCard';
 import { HeartIcon } from './icons/Icons';
+import { useAppContext } from '../context/AppContext';
 
 interface FavoritesPageProps {
   language: Language;
+  onProductClick: (product: Product) => void;
+  setActivePage: (page: Page) => void;
+  addToast: (message: string) => void;
 }
 
-const FavoritesPage: React.FC<FavoritesPageProps> = ({ language }) => {
+const FavoritesPage: React.FC<FavoritesPageProps> = ({ language, onProductClick, setActivePage, addToast }) => {
   const text = UI_TEXT[language];
-  const favoritedProducts = PRODUCTS.slice(0, 3); // Mock data
+  const { favorites } = useAppContext();
+  
+  const favoritedProducts = PRODUCTS.filter(p => favorites.includes(p.id));
 
   return (
     <div className="animate-fade animate-fade-in-up">
@@ -30,14 +36,22 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({ language }) => {
               </div>
               <h2 className="text-2xl font-semibold text-[var(--c-content)] mb-3">{text.favoritesEmpty}</h2>
               <p className="text-[var(--c-content)]/70 max-w-sm mx-auto mb-6">{text.favoritesEmptySubtitle}</p>
-              <button className="bg-[var(--c-content)] text-[var(--c-bg)] py-2 px-6 rounded-md font-semibold hover:bg-[var(--c-accent)] transition-colors duration-300">
+              <button 
+                onClick={() => setActivePage('categories')}
+                className="bg-[var(--c-content)] text-[var(--c-bg)] py-2 px-6 rounded-md font-semibold hover:bg-[var(--c-accent)] transition-colors duration-300">
                 {text.favoritesEmptyAction}
               </button>
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
               {favoritedProducts.map((product) => (
-                <ProductCard key={product.id} product={product} language={language} isFavorited={true} />
+                <ProductCard 
+                  key={product.id} 
+                  product={product} 
+                  language={language} 
+                  onProductClick={onProductClick}
+                  addToast={addToast}
+                />
               ))}
             </div>
           )}
