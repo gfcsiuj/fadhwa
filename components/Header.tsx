@@ -1,9 +1,9 @@
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Language, Page } from '../types';
 import { Theme } from '../App';
 import { UI_TEXT } from '../constants';
-import { MenuIcon, SearchIcon, UserIcon, CartIcon, GlobeIcon, XIcon } from './icons/Icons';
+import { MenuIcon, SearchIcon, UserIcon, CartIcon, GlobeIcon, XIcon, HomeIcon, GridIcon, HeartIcon } from './icons/Icons';
 import ThemeSwitcher from './ThemeSwitcher';
 import { useAppContext } from '../context/AppContext';
 
@@ -14,9 +14,10 @@ interface HeaderProps {
   onThemeChange: (theme: Theme) => void;
   setActivePage: (page: Page) => void;
   onCartClick: () => void;
+  activePage: Page;
 }
 
-const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThemeChange, setActivePage, onCartClick }) => {
+const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThemeChange, setActivePage, onCartClick, activePage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const { cart } = useAppContext();
@@ -24,13 +25,27 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
 
   const cartItemCount = cart.reduce((count, item) => count + item.quantity, 0);
 
-  const navLinks = [
+  const mobileNavLinks = [
     { page: 'home' as Page, label: text.navHome },
     { page: 'categories' as Page, label: text.navShop },
     { page: null, label: text.navAbout },
     { page: null, label: text.navContact },
   ];
   
+  const navItems = useMemo(() => [
+    { id: 'home', label: text.bottomNavHome, icon: <HomeIcon /> },
+    { id: 'categories', label: text.bottomNavCategories, icon: <GridIcon /> },
+    { id: 'favorites', label: text.bottomNavFavorites, icon: <HeartIcon /> },
+    { id: 'account', label: text.bottomNavAccount, icon: <UserIcon /> },
+  ], [text]);
+  
+  const activeTabIndex = navItems.findIndex(item => item.id === activePage);
+  const sliderWidth = 100 / navItems.length;
+  const isRtl = language === 'ar';
+  const sliderPosition = isRtl
+    ? (navItems.length - 1 - activeTabIndex) * 100
+    : activeTabIndex * 100;
+
   const handleMenuClose = () => {
     setIsClosing(true);
     setTimeout(() => {
@@ -46,7 +61,6 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
     handleMenuClose();
   };
 
-  const isRtl = language === 'ar';
   const menuAnimationClass = isRtl
     ? (isClosing ? 'cart-exit-rtl' : 'cart-enter-rtl')
     : (isClosing ? 'cart-exit-ltr' : 'cart-enter-ltr');
@@ -67,16 +81,37 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
               </div>
 
               {/* Desktop Navigation */}
-              <nav className="hidden md:flex md:space-x-8 rtl:md:space-x-reverse">
-                {navLinks.map((link) => (
-                  <a key={link.label} href="#" onClick={(e) => {
-                    e.preventDefault();
-                    if(link.page) setActivePage(link.page);
-                  }} className="text-lg font-medium text-[var(--c-content)] hover:text-opacity-75 transition-colors duration-200">
-                    {link.label}
-                  </a>
-                ))}
+              <nav className="hidden md:block h-14 w-96 relative">
+                 <div className="glass-bar rounded-full p-1 h-full">
+                    <div
+                        className="glass-bar-slider"
+                        style={{
+                          width: `${sliderWidth}%`,
+                          transform: `translateX(${sliderPosition}%)`,
+                        }}
+                    />
+                    <div className="flex justify-around items-center h-full w-full">
+                        {navItems.map((item) => (
+                          <a
+                            key={item.id}
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setActivePage(item.id as Page);
+                            }}
+                            className={`relative z-10 flex items-center justify-center space-x-2 rtl:space-x-reverse w-full h-full text-center transition-colors duration-300 ${
+                              activePage === item.id ? 'text-[var(--c-action)]' : 'text-[var(--c-content)]/70'
+                            } hover:text-[var(--c-action)]`}
+                            aria-current={activePage === item.id ? 'page' : undefined}
+                          >
+                            {React.cloneElement(item.icon, { 'aria-hidden': true, className: `h-5 w-5 ${activePage === item.id ? 'text-[var(--c-action)]' : ''}` })}
+                            <span className="text-sm font-medium">{item.label}</span>
+                          </a>
+                        ))}
+                    </div>
+                 </div>
               </nav>
+
             </div>
 
             {/* Icons & Actions */}
@@ -87,10 +122,7 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
               <button className="hidden md:flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
                 <SearchIcon />
               </button>
-              <button onClick={() => setActivePage('account')} className="hidden md:flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
-                <UserIcon />
-              </button>
-
+              
               <div className="md:hidden">
                 <ThemeSwitcher theme={theme} onThemeChange={onThemeChange} />
               </div>
@@ -138,7 +170,7 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
 
             <nav className="flex-grow p-4">
               <ul className="space-y-2">
-                {navLinks.map((link) => (
+                {mobileNavLinks.map((link) => (
                   <li key={link.label}>
                     <a href="#" onClick={(e) => {
                       e.preventDefault();

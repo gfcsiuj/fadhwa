@@ -81,6 +81,7 @@ const App: React.FC = () => {
           onThemeChange={setTheme}
           setActivePage={handlePageChange}
           onCartClick={() => setIsCartOpen(true)}
+          activePage={activePage}
           />
         <main className="pb-28 md:pb-0 overflow-x-hidden" key={activePage}>
           {renderPage()}
