@@ -30,7 +30,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ language, activePage, setActivePa
     : activeTabIndex * 100;
 
   return (
-    <nav className="md:hidden fixed bottom-4 inset-x-4 h-16 z-50 glass-bar rounded-full p-1">
+    <nav className="md:hidden fixed bottom-4 inset-x-4 h-16 z-45 glass-bar rounded-full p-1">
       <div
         className="glass-bar-slider"
         style={{
