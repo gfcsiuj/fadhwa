@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Product, Language } from '../types';
 import { UI_TEXT } from '../constants';
@@ -48,7 +47,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, language, onProductC
         <img 
           src={product.imageUrl} 
           alt={product.name[language]} 
-          className="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110" 
+          className="w-full h-44 sm:h-56 object-cover transition-transform duration-300 group-hover:scale-110" 
         />
         <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <button 
@@ -59,17 +58,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, language, onProductC
           <HeartIcon className={`w-6 h-6 ${isFavorited ? 'fill-current text-red-500' : 'fill-none'}`} />
         </button>
       </div>
-      <div className="p-5 flex flex-col flex-grow relative z-10">
+      <div className="p-4 flex flex-col flex-grow relative z-10">
         <p className="text-sm text-[var(--c-content)]/70 mb-1">{product.category[language]}</p>
-        <h3 className="text-lg font-bold text-[var(--c-content)] mb-2 flex-grow">
+        <h3 className="text-base sm:text-lg font-bold leading-tight text-[var(--c-content)] mb-2 flex-grow">
           {product.name[language]}
         </h3>
-        <p className="text-xl font-semibold text-[var(--c-content)] mb-4">
+        <p className="text-lg sm:text-xl font-semibold text-[var(--c-content)] mb-3">
           {product.price.toLocaleString(language === 'ar' ? 'ar-SA' : 'en-US')} {text.currency}
         </p>
         <button 
           onClick={handleAddToCartClick}
-          className="w-full mt-auto glass-btn justify-center text-[var(--c-content)] py-2 px-4 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-[var(--c-content)] focus:ring-opacity-50"
+          className="w-full mt-auto glass-btn justify-center text-[var(--c-content)] py-2 px-4 text-sm sm:text-base rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-[var(--c-content)] focus:ring-opacity-50"
         >
           {text.addToCart}
         </button>
