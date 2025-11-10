@@ -53,7 +53,7 @@ const App: React.FC = () => {
         theme={theme}
         onThemeChange={setTheme}
         />
-      <main className="pb-28 md:pb-0 overflow-x-hidden" key={activePage}>
+      <main className="overflow-x-hidden" key={activePage}>
         {renderPage()}
       </main>
       <Footer language={language} />
