@@ -27,21 +27,23 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
     <header className="bg-[var(--c-bg)]/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <a href="#" className="flex items-center">
-              <img className="h-16 w-auto" src="https://up6.cc/2025/10/176278484497082.png" alt="Fadhwa Logo" />
-            </a>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex md:space-x-8 rtl:md:space-x-reverse">
-            {navLinks.map((link) => (
-              <a key={link.label} href={link.href} className="text-lg font-medium text-[var(--c-content)] hover:text-opacity-75 transition-colors duration-200">
-                {link.label}
+          <div className="flex items-center space-x-8 rtl:space-x-reverse">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <a href="#" className="flex items-center">
+                <img className="h-16 w-auto" src="https://up6.cc/2025/10/176278484497082.png" alt="Fadhwa Logo" />
               </a>
-            ))}
-          </nav>
+            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex md:space-x-8 rtl:md:space-x-reverse">
+              {navLinks.map((link) => (
+                <a key={link.label} href={link.href} className="text-lg font-medium text-[var(--c-content)] hover:text-opacity-75 transition-colors duration-200">
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
 
           {/* Icons & Actions */}
           <div className="flex items-center space-x-2 rtl:space-x-reverse">
