@@ -30,7 +30,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ language, activePage, setActivePa
     : activeTabIndex * 100;
 
   return (
-    <nav className="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] h-16 z-50 glass-bar rounded-full p-1">
+    <nav className="md:hidden fixed bottom-4 inset-x-4 h-16 z-50 glass-bar rounded-full p-1">
       <div
         className="glass-bar-slider"
         style={{
@@ -38,7 +38,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ language, activePage, setActivePa
           transform: `translateX(${sliderPosition}%)`,
         }}
       />
-      <div className="grid grid-cols-4 items-center h-full w-full">
+      <div className="flex justify-around items-center h-full w-full">
         {navItems.map((item) => (
           <a
             key={item.id}

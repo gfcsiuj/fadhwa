@@ -19,7 +19,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
 
   return (
     <footer className="bg-[var(--c-content)] text-[var(--c-bg)]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-28 md:py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About */}
           <div className="space-y-4">
