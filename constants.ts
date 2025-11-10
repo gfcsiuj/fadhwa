@@ -22,7 +22,7 @@ export const UI_TEXT = {
     bottomNavCategories: 'التصنيفات',
     bottomNavFavorites: 'المفضلة',
     bottomNavAccount: 'حسابي',
-    categoriesPageTitle: 'تصفح جميع التصنيفات',
+    categoriesPageTitle: 'تصفح جميع المنتجات',
     favoritesPageTitle: 'قائمة المفضلات',
     favoritesEmpty: 'قائمة المفضلات فارغة.',
     favoritesEmptyAction: 'ابدأ التسوق',
@@ -44,6 +44,13 @@ export const UI_TEXT = {
     productDetails: 'تفاصيل المنتج',
     close: 'إغلاق',
     menu: 'القائمة',
+    allCategories: 'الكل',
+    sortBy: 'ترتيب حسب',
+    priceLowHigh: 'السعر: من الأقل للأعلى',
+    priceHighLow: 'السعر: من الأعلى للأقل',
+    searchPlaceholder: 'ابحث عن منتجات...',
+    noResults: 'لم يتم العثور على نتائج',
+    search: 'بحث',
   },
   en: {
     navHome: 'Home',
@@ -65,7 +72,7 @@ export const UI_TEXT = {
     bottomNavCategories: 'Categories',
     bottomNavFavorites: 'Favorites',
     bottomNavAccount: 'Account',
-    categoriesPageTitle: 'Browse All Categories',
+    categoriesPageTitle: 'Browse All Products',
     favoritesPageTitle: 'My Wishlist',
     favoritesEmpty: 'Your wishlist is empty.',
     favoritesEmptyAction: 'Start Shopping',
@@ -87,6 +94,13 @@ export const UI_TEXT = {
     productDetails: 'Product Details',
     close: 'Close',
     menu: 'Menu',
+    allCategories: 'All',
+    sortBy: 'Sort by',
+    priceLowHigh: 'Price: Low to High',
+    priceHighLow: 'Price: High to Low',
+    searchPlaceholder: 'Search for products...',
+    noResults: 'No results found',
+    search: 'Search',
   },
 };
 
@@ -201,5 +215,10 @@ export const CATEGORIES: Category[] = [
         id: 'furniture',
         name: { ar: 'أثاث', en: 'Furniture' },
         imageUrl: 'https://picsum.photos/seed/category_furniture/400/400'
+    },
+    {
+        id: 'bathroom',
+        name: { ar: 'حمام', en: 'Bathroom' },
+        imageUrl: 'https://picsum.photos/seed/category_bathroom/400/400'
     }
 ];

@@ -14,10 +14,11 @@ interface HeaderProps {
   onThemeChange: (theme: Theme) => void;
   setActivePage: (page: Page) => void;
   onCartClick: () => void;
+  onSearchClick: () => void;
   activePage: Page;
 }
 
-const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThemeChange, setActivePage, onCartClick, activePage }) => {
+const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThemeChange, setActivePage, onCartClick, onSearchClick, activePage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const { cart } = useAppContext();
@@ -119,12 +120,14 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
               <div className="hidden md:block">
                 <ThemeSwitcher theme={theme} onThemeChange={onThemeChange} />
               </div>
-              <button className="hidden md:flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
+              <button onClick={onSearchClick} className="hidden md:flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
                 <SearchIcon />
               </button>
               
               <div className="md:hidden">
-                <ThemeSwitcher theme={theme} onThemeChange={onThemeChange} />
+                 <button onClick={onSearchClick} className="flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
+                    <SearchIcon />
+                </button>
               </div>
 
               <button onClick={onCartClick} className="relative flex items-center justify-center h-11 w-11 glass-btn text-[var(--c-content)] rounded-full">
@@ -188,13 +191,8 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage, theme, onThem
                   <GlobeIcon />
                   <span>{text.language}</span>
                 </button>
-                <div className="flex items-center space-x-4 rtl:space-x-reverse mt-4 p-3">
-                    <button className="p-2 text-[var(--c-content)] hover:text-opacity-75 rounded-full">
-                      <SearchIcon />
-                    </button>
-                    <button onClick={() => handleNavLinkClick('account')} className="p-2 text-[var(--c-content)] hover:text-opacity-75 rounded-full">
-                      <UserIcon />
-                    </button>
+                 <div className="mt-4 p-3">
+                    <ThemeSwitcher theme={theme} onThemeChange={onThemeChange} />
                 </div>
             </div>
           </div>

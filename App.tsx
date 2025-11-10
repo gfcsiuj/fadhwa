@@ -12,6 +12,7 @@ import { Language, Page, Product } from './types';
 import ProductDetailModal from './components/ProductDetailModal';
 import CartPanel from './components/CartPanel';
 import ToastContainer from './components/ToastContainer';
+import SearchOverlay from './components/SearchOverlay';
 
 export type Theme = 'light' | 'dark';
 export type ToastMessage = {
@@ -26,6 +27,7 @@ const App: React.FC = () => {
   const [activePage, setActivePage] = useState<Page>('home');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
   useEffect(() => {
@@ -61,7 +63,7 @@ const App: React.FC = () => {
       case 'home':
         return <HomePage language={language} onProductClick={setSelectedProduct} addToast={addToast} />;
       case 'categories':
-        return <CategoriesPage language={language} />;
+        return <CategoriesPage language={language} onProductClick={setSelectedProduct} addToast={addToast} />;
       case 'favorites':
         return <FavoritesPage language={language} onProductClick={setSelectedProduct} setActivePage={handlePageChange} addToast={addToast} />;
       case 'account':
@@ -70,6 +72,11 @@ const App: React.FC = () => {
         return <HomePage language={language} onProductClick={setSelectedProduct} addToast={addToast} />;
     }
   }
+
+  const handleProductClick = (product: Product) => {
+    setSelectedProduct(product);
+    setIsSearchOpen(false); // Close search when a product is selected
+  };
 
   return (
     <AppProvider>
@@ -81,6 +88,7 @@ const App: React.FC = () => {
           onThemeChange={setTheme}
           setActivePage={handlePageChange}
           onCartClick={() => setIsCartOpen(true)}
+          onSearchClick={() => setIsSearchOpen(true)}
           activePage={activePage}
           />
         <main className="pb-28 md:pb-0 overflow-x-hidden" key={activePage}>
@@ -101,6 +109,13 @@ const App: React.FC = () => {
           isOpen={isCartOpen}
           onClose={() => setIsCartOpen(false)}
           language={language}
+        />
+        <SearchOverlay 
+          isOpen={isSearchOpen}
+          onClose={() => setIsSearchOpen(false)}
+          language={language}
+          onProductClick={handleProductClick}
+          addToast={addToast}
         />
         <ToastContainer toasts={toasts} removeToast={removeToast} />
       </div>
